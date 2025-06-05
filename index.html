@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I LOVE YOU</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #e1b1c9, #a674a1, #7e4e8f);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .text-container {
+            position: relative;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            z-index: 1;
+        }
+
+        .love-text {
+            font-size: 8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #ff69b4, #ff1493, #ffb6c1, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.7), 0 0 40px rgba(255, 20, 147, 0.5);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255, 105, 180, 0.7), 0 0 20px rgba(255, 20, 147, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(255, 105, 180, 1), 0 0 40px rgba(255, 20, 147, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(255, 105, 180, 0.7), 0 0 20px rgba(255, 20, 147, 0.5); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+            border-radius: 50%;
+            animation: sparkle 1.5s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(0); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .sparkle:nth-child(1) { top: -20px; left: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 10px; left: 50%; animation-delay: 0.3s; }
+        .sparkle:nth-child(3) { top: 50px; left: 80%; animation-delay: 0.6s; }
+        .sparkle:nth-child(4) { top: 100px; left: 30%; animation-delay: 0.9s; }
+        .sparkle:nth-child(5) { top: 120px; left: 60%; animation-delay: 1.2s; }
+
+        .snowflake {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.7;
+            pointer-events: none;
+            animation: fall linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+
+        .snowflake:nth-child(6) { left: 10%; width: 8px; height: 8px; animation-duration: 10s; animation-delay: 0s; }
+        .snowflake:nth-child(7) { left: 20%; width: 6px; height: 6px; animation-duration: 12s; animation-delay: 1s; }
+        .snowflake:nth-child(8) { left: 30%; width: 10px; height: 10px; animation-duration: 9s; animation-delay: 2s; }
+        .snowflake:nth-child(9) { left: 40%; width: 7px; height: 7px; animation-duration: 11s; animation-delay: 3s; }
+        .snowflake:nth-child(10) { left: 50%; width: 9px; height: 9px; animation-duration: 10s; animation-delay: 4s; }
+        .snowflake:nth-child(11) { left: 60%; width: 8px; height: 8px; animation-duration: 13s; animation-delay: 5s; }
+        .snowflake:nth-child(12) { left: 70%; width: 6px; height: 6px; animation-duration: 8s; animation-delay: 6s; }
+        .snowflake:nth-child(13) { left: 80%; width: 10px; height: 10px; animation-duration: 11s; animation-delay: 7s; }
+        .snowflake:nth-child(14) { left: 90%; width: 7px; height: 7px; animation-duration: 9s; animation-delay: 8s; }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff69b4;
+            transform: rotate(-45deg);
+            animation: float 6s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff69b4;
+            border-radius: 50%;
+        }
+
+        .heart:before { top: -10px; left: 0; }
+        .heart:after { left: 10px; top: 0; }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(-45deg) translateX(0); opacity: 0.6; }
+            50% { opacity: 0.9; }
+            100% { transform: translateY(-100vh) rotate(-45deg) translateX(calc(100px * var(--drift))); opacity: 0; }
+        }
+
+        .heart:nth-child(15) { left: 15%; --drift: -0.5; animation-duration: 5s; animation-delay: 0s; }
+        .heart:nth-child(16) { left: 25%; --drift: 0.3; animation-duration: 7s; animation-delay: 1s; }
+        .heart:nth-child(17) { left: 35%; --drift: -0.2; animation-duration: 6s; animation-delay: 2s; }
+        .heart:nth-child(18) { left: 45%; --drift: 0.4; animation-duration: 8s; animation-delay: 3s; }
+        .heart:nth-child(19) { left: 55%; --drift: -0.3; animation-duration: 5.5s; animation-delay: 4s; }
+        .heart:nth-child(20) { left: 65%; --drift: 0.5; animation-duration: 6.5s; animation-delay: 5s; }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: twinkle 3s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0.2; transform: scale(1); }
+        }
+
+        .star:nth-child(21) { top: 10%; left: 15%; animation-delay: 0s; }
+        .star:nth-child(22) { top: 20%; left: 25%; animation-delay: 0.5s; }
+        .star:nth-child(23) { top: 30%; left: 70%; animation-delay: 1s; }
+        .star:nth-child(24) { top: 40%; left: 10%; animation-delay: 1.5s; }
+        .star:nth-child(25) { top: 50%; left: 80%; animation-delay: 2s; }
+        .star:nth-child(26) { top: 60%; left: 30%; animation-delay: 2.5s; }
+        .star:nth-child(27) { top: 70%; left: 50%; animation-delay: 3s; }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #ffb6c1, transparent);
+            border-radius: 50%;
+            animation: drift 8s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); opacity: 0.8; }
+            50% { opacity: 0.3; }
+            100% { transform: translate(calc(50px * var(--drift-x)), calc(50px * var(--drift-y))); opacity: 0; }
+        }
+
+        .particle:nth-child(28) { top: 15%; left: 20%; --drift-x: 0.5; --drift-y: -0.3; animation-duration: 7s; }
+        .particle:nth-child(29) { top: 25%; left: 60%; --drift-x: -0.4; --drift-y: 0.5; animation-duration: 6s; }
+        .particle:nth-child(30) { top: 35%; left: 40%; --drift-x: 0.3; --drift-y: 0.2; animation-duration: 8s; }
+        .particle:nth-child(31) { top: 45%; left: 75%; --drift-x: -0.5; --drift-y: -0.4; animation-duration: 5s; }
+        .particle:nth-child(32) { top: 55%; left: 30%; --drift-x: 0.2; --drift-y: 0.6; animation-duration: 9s; }
+    </style>
+</head>
+<body>
+    <div class="text-container">
+        <h1 class="love-text">I LOVE YOU</h1>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="snowflake"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+</body>
+  </html>
