@@ -36,14 +36,11 @@ jobs:
           libffi-dev \
           libssl-dev \
           python3-dev
-        # Giới hạn phiên bản Cython < 3.0.0 để tránh lỗi tương thích Buildozer
         pip install --upgrade buildozer "cython<3.0.0" virtualenv
 
     - name: Build APK
       run: |
-        # Dùng 'yes' để tự động nhấn Y chấp nhận các điều khoản SDK/NDK
-        # Thêm tham số -v để hiển thị log chi tiết
-        yes | buildozer -v android debug
+        buildozer -v android debug
 
     - name: Upload APK as Artifact
       uses: actions/upload-artifact@v4
