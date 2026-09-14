@@ -1,0 +1,34 @@
+name: Build APK with Buildozer
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch: # Cho phép bạn bấm nút chạy thủ công trên GitHub
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
+        pip install --upgrade buildozer cython virtualenv
+
+    - name: Build APK
+      run: buildozer android debug
+
+    - name: Upload APK as Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-android-app
+        path: bin/*.apk
